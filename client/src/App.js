@@ -26,7 +26,7 @@ class App extends Component {
           <h1 className="App-title">
             Welcome
           </h1>
-          <p className="App-intro">;{this.state.apiResponse}</p>
+          <p className="App-intro">{this.state.apiResponse}</p>
         </header>
       </div>
     );

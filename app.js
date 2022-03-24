@@ -1,7 +1,10 @@
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI || "mongodb+srv://coralinepozzi:aUsHU41SGTH33H9i@cluster0.fwsih.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const port = process.env.PORT || 9000;
+const path = require("path");
+var dotenv = require("dotenv").config();
 var createError = require('http-errors');
+var mongoose = require('mongoose');
 var express = require('express');
-var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
@@ -23,6 +26,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "client", "build")))
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -44,4 +49,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+mongoose.connect(uri, { useNewUrlParser: true });
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+//app.listen(port);
 module.exports = app;
