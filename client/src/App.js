@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-
+import { useState, useEffect } from 'react'
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -34,41 +34,48 @@ if (localStorage.jwtToken) {
   }
 }
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: "" };
-  }
+function App(props) {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { apiResponse: "" };
+  // }
+  const [apiResponse, setApiresponse] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  callAPI() {
+  const callAPI = () => {
       fetch("http://localhost:9001/testAPI")
           .then(res => res.text())
-          .then(res => this.setState({ apiResponse: res }));
+          .then(res => setApiresponse(res));
   }
 
-  componentWillMount() {
-      this.callAPI();
-  }
+//   const callTheatre = (town) => {
+//     fetch("http://localhost:9001/theatres/list?town=Metz")
+//         .then(res => res.text())
+//         .then(res => setApiresponse(res));
+// }
+  useEffect(() => {
+        callAPI();
+        //callTheatre("Metz");
+  }, [])
   
-  render(){
-    return (
-      <Provider store={store}>
-        <Router >
-            <div className="App">
-              <Navbar />
-              <Routes>
-                <Route exact path="/" element={<Landing />} />
-                <Route exact path="/register" element={<Register />} />
-                <Route exact path="/login" element={<Login />} />
-                  <Route exact path='/dashboard' element={<Dashboard/>}/>
-              </Routes>
-            </div>
-        </Router>
-      </Provider>
-          
-    );
-  }
-  
+
+  return (
+    <Provider store={store}>
+      <Router >
+          <div className="App">
+          <Navbar />
+            <Routes>
+              <Route exact path="/" element={<Dashboard />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route exact path="/login" element={<Login />} />
+                <Route exact path='/dashboard' element={<Dashboard/>}/>
+            </Routes>
+          </div>
+      </Router>
+    </Provider>
+        
+  );
 }
+  
 
 export default App;
