@@ -15,7 +15,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var theatreRouter = require('./routes/theatre');
 var testAPIRouter = require('./routes/testAPI');
-var showtimesRouter = require('./routes/showtimes');
+var townRouter = require('./routes/town');
 const axios = require("axios");
 
 
@@ -52,7 +52,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter);
 app.use('/theatres', theatreRouter);
-app.use('/showtimes', showtimesRouter);
+app.use('/towns', townRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -73,8 +73,6 @@ app.use(function(err, req, res, next) {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
-
-console.log(showtimesRouter.getShowtimesByTheatres("Metz", "Klub"))
 
 mongoose.connect(uri, { useNewUrlParser: true });
 var db = mongoose.connection;
