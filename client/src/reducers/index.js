@@ -5,5 +5,5 @@ import listReducer from "./listReducers";
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  theaters : listReducer
+  theaters : listReducer,
 });

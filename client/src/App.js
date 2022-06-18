@@ -14,6 +14,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
+import Showtimes from "./components/dashboard/Showtimes";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -39,14 +40,14 @@ function App(props) {
   //   super(props);
   //   this.state = { apiResponse: "" };
   // }
-  const [apiResponse, setApiresponse] = useState('');
+  const [apiResponse, setApiresponse] = ('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const callAPI = () => {
-      fetch("http://localhost:9001/testAPI")
-          .then(res => res.text())
-          .then(res => setApiresponse(res));
-  }
+  // const callAPI = () => {
+  //     fetch("http://localhost:9001/testAPI")
+  //         .then(res => res.text())
+  //         .then(res => setApiresponse(res));
+  // }
 
 //   const callTheatre = (town) => {
 //     fetch("http://localhost:9001/theatres/list?town=Metz")
@@ -54,7 +55,8 @@ function App(props) {
 //         .then(res => setApiresponse(res));
 // }
   useEffect(() => {
-        callAPI();
+    console.log("App")
+        //callAPI();
         //callTheatre("Metz");
   }, [])
   
@@ -69,6 +71,7 @@ function App(props) {
               <Route exact path="/register" element={<Register />} />
               <Route exact path="/login" element={<Login />} />
                 <Route exact path='/dashboard' element={<Dashboard/>}/>
+                <Route exact path='/showtimes' element={<Showtimes/>}/>
             </Routes>
           </div>
       </Router>

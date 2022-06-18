@@ -16,7 +16,9 @@ var usersRouter = require('./routes/users');
 var theatreRouter = require('./routes/theatre');
 var testAPIRouter = require('./routes/testAPI');
 var townRouter = require('./routes/town');
+var movieRouter = require('./routes/movie');
 const axios = require("axios");
+const getMovieByName = require("./routes/movie");
 
 
 
@@ -53,6 +55,7 @@ app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter);
 app.use('/theatres', theatreRouter);
 app.use('/towns', townRouter);
+app.use('/movies', movieRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -73,6 +76,8 @@ app.use(function(err, req, res, next) {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
+
+//console.log("Top Gun: Maverick", getMovieByName("Top Gun: Maverick").results)
 
 mongoose.connect(uri, { useNewUrlParser: true });
 var db = mongoose.connection;
