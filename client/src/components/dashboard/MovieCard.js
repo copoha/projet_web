@@ -15,8 +15,9 @@ export const MovieCard = ({ movie }) => {
     }
 
     useEffect(() => {
-
+        
         const fetchData = async () => {
+           
             const res = await axios.get("/movies/movie", { params: { movie: movie.name } })
             // console.log(res.data)
             setMovieInfo(res.data)
@@ -26,7 +27,7 @@ export const MovieCard = ({ movie }) => {
 
         fetchData().catch(console.error)
 
-    }, [])
+    }, [movie])
 
     return (
         <div class='column'>
