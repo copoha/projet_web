@@ -16,7 +16,8 @@ const getTheatresByTown = (town) => axios({
         },
         params: {
             dataset: 'liste-des-etablissements-cinematographiques-en-france',
-            q: town
+            q: "ville:"+ town,
+            rows: 100
         }
     })
 
