@@ -24,7 +24,7 @@ const getMovieByName = (name) => axios({
 
 router.get("/movie", async (req, response) => {
     let data = await getMovieByName(req.query.movie);
-    console.log(data.data);
+    //console.log(data.data);
     response.send(data.data.results[0]);
 })
 

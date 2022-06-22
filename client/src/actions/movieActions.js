@@ -8,7 +8,7 @@ import {
     axios
       .get("/movies/movie", {params:{movie: name} })
       .then(res => { 
-        console.log(res.data)
+        console.log("got movies")
       })
       .catch(err =>
         dispatch({

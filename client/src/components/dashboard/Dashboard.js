@@ -43,7 +43,7 @@ function Dashboard(props) {
       minLength:0,  
       onAutocomplete: (town) => setselectedTowns(town)
     });
-    console.log(instances[0].options.data)
+    console.log("got towns")
   }, [])
 
 
