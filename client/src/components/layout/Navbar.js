@@ -23,8 +23,8 @@ function Navbar(props) {
   ];
   const notLoggedLinks = [
     // Don't forget keys. The numbers here are only for example.
-        <li><a href="/login">Login</a></li>,
-        <li><a href="/register">Register</a></li>
+        <li><a onClick={() => navigate('/login')}>Login</a></li>,
+        <li><a onClick={() => navigate('/register')}>Register</a></li>
   ];
 
   if("auth" in props && props.auth.isAuthenticated){

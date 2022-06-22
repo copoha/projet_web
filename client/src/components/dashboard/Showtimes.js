@@ -14,7 +14,7 @@ function Showtimes(props) {
     useEffect(() => {
 
         console.log('theatreName, townName', theatreName, townName)
-        // if they dont exist because user have navigate to the page by entering diredcly the url do nothing
+        // if they dont exist because user have navigated to the page by entering directly the url do nothing
         if (!theatreName || !townName) {
             return
         }
