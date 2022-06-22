@@ -27,7 +27,11 @@ function Dashboard(props) {
     theatres.push(props.theaters[key])
   }
   let userName = "";
-
+  let town = "Paris";
+  if (props.auth.isAuthenticated) {
+    userName = user.name.split(" ")[0];
+    town = "Reims"
+  }
   let towns = { "Reims": null, "Metz": null, "Caen": null, "Paris": null, "Marseille": null, "Lyon":null, "Toulouse":null, "Nice":null, "Nantes":null, "Montpellier":null, "Strasbourg":null, "Bordeaux":null, "Lille":null, "Rennes":null, "Toulon":null, "Saint-Etienne":null, "Le Havre":null, "Grenoble":null, "Dijon":null, "Angers":null, "Saint-Denis":null, "Villeurbanne":null, "Nîmes":null }
 
 
