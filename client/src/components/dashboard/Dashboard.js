@@ -72,10 +72,11 @@ function Dashboard(props) {
             <div class="input-field col s12">
               <i class="material-icons prefix">pin_drop</i>
               <input type="text" id="autocomplete-input" class="autocomplete" />
-              <label for="autocomplete-input">Ville</label>
+              <label for="autocomplete-input">{selectedTowns}</label>
             </div>
             {props.auth.isAuthenticated &&
-             <a class="btn-floating waves-effect waves-light red"  onClick={onAddTownClick}><i class="material-icons">add</i></a>}
+             <a class="btn-floating waves-effect waves-light red"  onClick={onAddTownClick}><i class="material-icons">add</i></a>
+             }
           </h6>
           <div class="carousel" style={{ height: '100%' , flex: "1"}}>
             {theatres[0].map(theatre => <Theaters theatre={theatre} /> )}

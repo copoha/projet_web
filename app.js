@@ -77,7 +77,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-//console.log("Top Gun: Maverick", getMovieByName("Top Gun: Maverick").results)
 
 mongoose.connect(uri, { useNewUrlParser: true });
 var db = mongoose.connection;
