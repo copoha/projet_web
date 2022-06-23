@@ -34,7 +34,7 @@ export const MovieCard = ({ movie }) => {
 
             <div class="col s2">
                 {loadingFinished &&
-                    <div class="card small" style={{ width: 'auto', marginLeft: 10, marginRight: 10, width: '300px' }}>
+                    <div class="card small" style={{ width: 'auto', marginLeft: 10, marginRight: 10, width: '300px', height: '400px' }}>
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator card-image" src={'https://image.tmdb.org/t/p/original/' + movieInfo.poster_path} />
                         </div>
