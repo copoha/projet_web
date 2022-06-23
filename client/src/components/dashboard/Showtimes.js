@@ -10,11 +10,12 @@ function Showtimes(props) {
 
     const { state } = useLocation();
     const { theatreName, townName } = state; // Read values passed on state by navigate
+    
 
     useEffect(() => {
-
+        
         console.log('theatreName, townName', theatreName, townName)
-        // if they dont exist because user have navigated to the page by entering directly the url do nothing
+        // if they dont exist because user has navigated to the page by entering directly the url do nothing
         if (!theatreName || !townName) {
             return
         }
@@ -28,7 +29,7 @@ function Showtimes(props) {
 
 
 
-    // if they dont exist because user have navigate to the page by entering diredcly the url return nothing
+    // if they dont exist because user has navigated to the page by entering directly the url return nothing
     if (!theatreName || !townName || props.showtimes.length === 0) {
         return (
             <div>

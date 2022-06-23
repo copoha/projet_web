@@ -6,6 +6,7 @@ const keys = require("../config/key");
 // Load input validation
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
+const validateUpdateTownInput = require("../validation/updateTown");
 // Load User model
 const User = require("../models/User");
 
@@ -43,6 +44,26 @@ User.findOne({ email: req.body.email }).then(user => {
   });
   });
 
+  router.post("/town", (req, res) => {
+        // Form validation
+        console.log("req body", req.body.params)
+      const { errors, isValid } = validateUpdateTownInput(req.body.params);
+      // Check validation
+        if (!isValid) {
+          console.log("non valide");
+          return res.status(400).json(errors);
+          
+        }
+      User.findOneAndUpdate({ email: req.body.params.userData.email }, {town: req.body.params.town }, {returnOriginal: false}).then(user => {
+        // Check if user exists
+        if (!user) {
+          return res.status(404).json({ emailnotfound: "Email not found" });
+        }else{
+          console.log(user);
+        };
+    })
+  });
+
   // @route POST /users/login
 // @desc Login user and return JWT token
 // @access Public
@@ -68,7 +89,9 @@ const email = req.body.email;
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          email:user.email,
+          town:user.town
         };
 // Sign token
         jwt.sign(

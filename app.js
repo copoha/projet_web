@@ -84,5 +84,5 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //app.listen(port);
 //app.listen(port, () => console.log(`Server up and running on port ${port} !`));
-module.exports = app;
+//module.exports = app;
 

@@ -18,6 +18,21 @@ export const registerUser = (userData, history) => dispatch => {
       })
     );
 };
+
+//change town
+export const updateTown = (userData, town) => dispatch => {
+  console.log("user action", userData)
+    console.log("town action ", town)
+  axios
+    .post("/users/town", { params: { userData: userData, town: town } })
+    .then(res => console.log("town changed"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 // Login - get user token
 export const loginUser = (userData, history) => dispatch => {
   axios
